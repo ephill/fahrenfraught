@@ -20,7 +20,6 @@ export const Main = () => {
       {!longLat && <span>Allow location data to continue.</span>}
       {longLat && (
         <span>
-          {longLat.latitude},{longLat.longitude}
           <Weather location={longLat} />
         </span>
       )}

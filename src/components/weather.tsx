@@ -7,18 +7,33 @@ export const Weather = (props: { location: GeoLocation }) => {
   const { location } = props;
 
   const [periods, setPeriods] = useState<any>();
+  const [relativeLocation, setRelativeLocation] = useState<any>();
   useEffect(() => {
-    getWeatherData(location).then((res) => setPeriods(res));
+    getWeatherData(location).then((res) => {
+      setPeriods(res.periods);
+      setRelativeLocation(res.relativeLocation);
+    });
   }, [location]);
+
+  if (!relativeLocation && !periods) {
+    return null;
+  }
+
   return (
-    <div className="flex flex-col">
-      {periods &&
-        periods.map((p: any) => (
-          <div key={p.number}>
-            {p.name} = {p.temperature} /{" "}
-            {convertFahrenheitToCelsius(p.temperature)}
-          </div>
-        ))}
-    </div>
+    <>
+      <div>
+        Showing location data for {relativeLocation.properties.city},{" "}
+        {relativeLocation.properties.state}
+      </div>
+      <div className="flex flex-col">
+        {periods &&
+          periods.map((p: any) => (
+            <div key={p.number}>
+              {p.name} = {p.temperature} /{" "}
+              {convertFahrenheitToCelsius(p.temperature)}
+            </div>
+          ))}
+      </div>
+    </>
   );
 };
