@@ -1,12 +1,12 @@
+import { Location } from "@/components/location";
 import { convertFahrenheitToCelsius } from "@/lib/convertTemp";
 import { GeoLocation } from "@/lib/geoLocation";
 import {
   GetForecastResponse,
   GetPointResponse,
   getWeatherData,
-  RelativeLocation,
 } from "@/lib/getWeatherData";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 
 export const Weather = (props: { location: GeoLocation }) => {
   const { location } = props;
@@ -20,23 +20,14 @@ export const Weather = (props: { location: GeoLocation }) => {
     });
   }, [location]);
 
-  const cityState = useMemo(() => {
-    if (point) {
-      const relativeLocation = point.properties
-        .relativeLocation as RelativeLocation;
-
-      return `${relativeLocation.properties.city}, ${relativeLocation.properties.state}`;
-    }
-  }, [point]);
-
   if (!point || !forecast) {
     return null;
   }
 
   return (
     <>
-      <div>Showing location data for {cityState}</div>
       <div className="flex flex-col">
+        <Location point={point} />
         {forecast.properties?.periods &&
           forecast.properties.periods.map((p) => (
             <div key={p.number}>
