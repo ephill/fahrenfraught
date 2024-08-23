@@ -23,5 +23,5 @@ export const ForecastIcon = (props: { period: Period }) => {
     return <Moon className={className} />;
   }
 
-  return <Sun className="justify-self-center" />;
+  return <Sun className={className} />;
 };
