@@ -1,4 +1,4 @@
-import { convertFahrenheitToCelsius } from "@/lib/convertTemp";
+import { ForecastPeriod } from "@/components/forecastPeriod";
 import { GetForecastResponse } from "@/lib/getWeatherData";
 
 export const ForecastPeriods = (props: { forecast: GetForecastResponse }) => {
@@ -8,10 +8,7 @@ export const ForecastPeriods = (props: { forecast: GetForecastResponse }) => {
     <>
       {forecast.properties?.periods &&
         forecast.properties.periods.map((p) => (
-          <div key={p.number}>
-            {p.name} = {p.temperature as number} /{" "}
-            {convertFahrenheitToCelsius(p.temperature as number)}
-          </div>
+          <ForecastPeriod key={p.number!} period={p} />
         ))}
     </>
   );

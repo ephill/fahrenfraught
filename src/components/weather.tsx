@@ -25,11 +25,9 @@ export const Weather = (props: { location: GeoLocation }) => {
   }
 
   return (
-    <>
-      <div className="flex flex-col">
-        <Location point={point} />
-        <ForecastPeriods forecast={forecast} />
-      </div>
-    </>
+    <div className="flex flex-col">
+      <Location point={point} />
+      <ForecastPeriods forecast={forecast} />
+    </div>
   );
 };
