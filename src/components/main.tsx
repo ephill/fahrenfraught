@@ -18,11 +18,7 @@ export const Main = () => {
   return (
     <main className="flex flex-1 flex-col items-center justify-center p-24">
       {!longLat && <span>Allow location data to continue.</span>}
-      {longLat && (
-        <span>
-          <Weather location={longLat} />
-        </span>
-      )}
+      {longLat && <Weather location={longLat} />}
     </main>
   );
 };
