@@ -12,13 +12,15 @@ export const ForecastPeriod = (props: { period: Period }) => {
   const temperature = period.temperature as number;
 
   const temperatureDisplay = useMemo(() => {
-    const t = temperature as number;
-    return `${t}° F / ${convertFahrenheitToCelsius(t)}° C`;
+    const celsius = convertFahrenheitToCelsius(temperature);
+    return `${temperature}° F / ${celsius.toLocaleString(undefined, { minimumFractionDigits: 1, maximumFractionDigits: 1 })}° C`;
   }, [temperature]);
 
   return (
-    <div>
-      {period.name} = {temperatureDisplay}
+    <div className="col-span-3 grid grid-cols-subgrid items-center gap-0 rounded bg-accent px-2 py-1">
+      <div>{period.name}</div>
+      <div />
+      <div className="text-end">{temperatureDisplay}</div>
     </div>
   );
 };

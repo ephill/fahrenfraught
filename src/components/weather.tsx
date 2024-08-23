@@ -25,7 +25,7 @@ export const Weather = (props: { location: GeoLocation }) => {
   }
 
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col gap-2">
       <Location point={point} />
       <ForecastPeriods forecast={forecast} />
     </div>
