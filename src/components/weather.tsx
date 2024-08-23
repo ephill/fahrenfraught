@@ -1,5 +1,5 @@
+import { ForecastPeriods } from "@/components/forecastPeriods";
 import { Location } from "@/components/location";
-import { convertFahrenheitToCelsius } from "@/lib/convertTemp";
 import { GeoLocation } from "@/lib/geoLocation";
 import {
   GetForecastResponse,
@@ -28,13 +28,7 @@ export const Weather = (props: { location: GeoLocation }) => {
     <>
       <div className="flex flex-col">
         <Location point={point} />
-        {forecast.properties?.periods &&
-          forecast.properties.periods.map((p) => (
-            <div key={p.number}>
-              {p.name} = {p.temperature as number} /{" "}
-              {convertFahrenheitToCelsius(p.temperature as number)}
-            </div>
-          ))}
+        <ForecastPeriods forecast={forecast} />
       </div>
     </>
   );
