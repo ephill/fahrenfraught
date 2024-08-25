@@ -12,5 +12,5 @@ export const Location = (props: { point: GetPointResponse }) => {
     }
   }, [point]);
 
-  return <div className="text-center text-2xl">{cityState}</div>;
+  return <div className="text-center text-3xl">{cityState}</div>;
 };
