@@ -16,7 +16,7 @@ export const Main = () => {
   }, []);
 
   return (
-    <main className="flex flex-1 flex-col items-center justify-center p-6 md:p-12 lg:p-24">
+    <main className="flex flex-1 flex-col items-center justify-center p-8 md:p-16 lg:p-24">
       {!longLat && (
         <span className="text-2xl">Allow location data to continue.</span>
       )}

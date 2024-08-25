@@ -39,7 +39,7 @@ export const ForecastPeriod = (props: { day: ForecastDay }) => {
   return (
     <div
       className={cn(
-        "col-span-3 grid grid-cols-subgrid items-center rounded bg-accent px-2 py-2 md:px-4",
+        "col-span-3 grid grid-cols-subgrid items-center rounded bg-accent px-4 py-2",
         {
           "grid-rows-2": isFullDay,
           "gap-y-2": isFullDay,

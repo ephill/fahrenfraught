@@ -36,7 +36,7 @@ export const ForecastPeriods = (props: { forecast: GetForecastResponse }) => {
   }, [forecast.properties?.periods]);
 
   return (
-    <div className="grid grid-cols-3 gap-y-2">
+    <div className="grid grid-cols-[minmax(0,_1fr)_auto_minmax(0,_1fr)] gap-y-2">
       {groupedByDay.map((day) => (
         <ForecastPeriod key={day.date.getUTCMilliseconds()} day={day} />
       ))}

@@ -6,7 +6,7 @@ type Period = components["schemas"]["GridpointForecastPeriod"];
 export const ForecastIcon = (props: { period: Period }) => {
   const { period } = props;
 
-  const className = "justify-self-center";
+  const className = "justify-self-center mx-3";
 
   const chancePrecipitation = period.probabilityOfPrecipitation?.value;
   if (chancePrecipitation && chancePrecipitation > 0) {
