@@ -1,11 +1,8 @@
 import { ForecastPeriods } from "@/components/forecastPeriods";
 import { Location } from "@/components/location";
 import { GeoLocation } from "@/lib/geoLocation";
-import {
-  GetForecastResponse,
-  GetPointResponse,
-  getWeatherData,
-} from "@/lib/getWeatherData";
+import { getWeatherData } from "@/lib/getWeatherData";
+import { GetForecastResponse, GetPointResponse } from "@/lib/types";
 import { useEffect, useState } from "react";
 
 export const Weather = (props: { location: GeoLocation }) => {
@@ -25,7 +22,7 @@ export const Weather = (props: { location: GeoLocation }) => {
   }
 
   return (
-    <div className="flex flex-col gap-2">
+    <div className="flex flex-col gap-3">
       <Location point={point} />
       <ForecastPeriods forecast={forecast} />
     </div>

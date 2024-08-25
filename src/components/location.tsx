@@ -1,4 +1,4 @@
-import { GetPointResponse, RelativeLocation } from "@/lib/getWeatherData";
+import { GetPointResponse, RelativeLocation } from "@/lib/types";
 import { useMemo } from "react";
 
 export const Location = (props: { point: GetPointResponse }) => {

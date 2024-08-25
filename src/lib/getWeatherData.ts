@@ -1,13 +1,5 @@
 import { GeoLocation } from "@/lib/geoLocation";
-import type { components, paths } from "@/lib/weather-gov-schema";
-
-export type GetPointResponse =
-  paths["/points/{point}"]["get"]["responses"]["200"]["content"]["application/geo+json"];
-
-export type RelativeLocation = components["schemas"]["RelativeLocationGeoJson"];
-
-export type GetForecastResponse =
-  paths["/gridpoints/{wfo}/{x},{y}/forecast"]["get"]["responses"]["200"]["content"]["application/geo+json"];
+import { GetForecastResponse, GetPointResponse } from "@/lib/types";
 
 export async function getWeatherData(location: GeoLocation) {
   const point = (await fetch(
