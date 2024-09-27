@@ -3,6 +3,7 @@ import { Location } from "@/components/location";
 import { GeoLocation } from "@/lib/geoLocation";
 import { getWeatherData } from "@/lib/getWeatherData";
 import { GetForecastResponse, GetPointResponse } from "@/lib/types";
+import { WeatherContext } from "@/lib/weatherContext";
 import { useEffect, useState } from "react";
 
 export const Weather = (props: { location: GeoLocation }) => {
@@ -22,9 +23,16 @@ export const Weather = (props: { location: GeoLocation }) => {
   }
 
   return (
-    <div className="flex flex-col gap-3">
-      <Location point={point} />
-      <ForecastPeriods forecast={forecast} />
-    </div>
+    <WeatherContext.Provider
+      value={{
+        point,
+        forecast,
+      }}
+    >
+      <div className="flex flex-col gap-3">
+        <Location point={point} />
+        <ForecastPeriods forecast={forecast} />
+      </div>
+    </WeatherContext.Provider>
   );
 };

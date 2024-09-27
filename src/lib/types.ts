@@ -15,3 +15,6 @@ export type RelativeLocation = components["schemas"]["RelativeLocationGeoJson"];
 
 export type GetForecastResponse =
   paths["/gridpoints/{wfo}/{x},{y}/forecast"]["get"]["responses"]["200"]["content"]["application/geo+json"];
+
+export type GetHourlyForecastResponse =
+  paths["/gridpoints/{wfo}/{x},{y}/forecast/hourly"]["get"]["responses"]["200"]["content"]["application/geo+json"];

@@ -1,5 +1,9 @@
 import { GeoLocation } from "@/lib/geoLocation";
-import { GetForecastResponse, GetPointResponse } from "@/lib/types";
+import {
+  GetForecastResponse,
+  GetHourlyForecastResponse,
+  GetPointResponse,
+} from "@/lib/types";
 
 export async function getWeatherData(location: GeoLocation) {
   const point = (await fetch(
@@ -11,4 +15,10 @@ export async function getWeatherData(location: GeoLocation) {
   )) as GetForecastResponse;
 
   return { point, forecast };
+}
+
+export async function getHourlyForecast(point: GetPointResponse) {
+  return (await fetch(point.properties.forecastHourly!).then((res) =>
+    res.json(),
+  )) as GetHourlyForecastResponse;
 }
