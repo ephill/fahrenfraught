@@ -11,7 +11,7 @@ export const Footer = () => {
         >
           @ephill
         </a>
-        . For my future wife.
+        . For my wife.
       </p>
     </div>
   );
