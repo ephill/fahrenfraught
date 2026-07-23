@@ -5,13 +5,10 @@ import { useMemo } from "react";
 export const ForecastPeriods = (props: { forecast: GetForecastResponse }) => {
   const { forecast } = props;
 
+  const periods = forecast.properties?.periods;
   const groupedByDay = useMemo(() => {
     const ret: ForecastDay[] = [];
-    if (
-      forecast.properties?.periods &&
-      forecast.properties.periods.length > 0
-    ) {
-      const periods = forecast.properties.periods;
+    if (periods && periods.length > 0) {
       let currentDate = new Date(periods[0].startTime!);
       let day: Period | undefined = undefined;
       let night: Period | undefined = undefined;
@@ -33,12 +30,12 @@ export const ForecastPeriods = (props: { forecast: GetForecastResponse }) => {
     }
 
     return ret;
-  }, [forecast.properties?.periods]);
+  }, [periods]);
 
   return (
     <div className="grid grid-cols-[minmax(0,_1fr)_auto_minmax(0,_1fr)] gap-y-2">
       {groupedByDay.map((day) => (
-        <ForecastPeriod key={day.date.getUTCMilliseconds()} day={day} />
+        <ForecastPeriod key={day.date.getTime()} day={day} />
       ))}
     </div>
   );
